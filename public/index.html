@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render Test</title>
+</head>
+
+<body>
+
+    <h1>🚀 Render Deployment Successful!</h1>
+
+    <p id="status">Checking backend...</p>
+
+    <button onclick="checkBackend()">Check Backend</button>
+
+    <script>
+        async function checkBackend() {
+            try {
+                const response = await fetch("/api/test");
+                const data = await response.json();
+
+                document.getElementById("status").textContent =
+                    data.message;
+            } catch (error) {
+                document.getElementById("status").textContent =
+                    "❌ Backend connection failed!";
+            }
+        }
+
+        checkBackend();
+    </script>
+
+</body>
+</html>
